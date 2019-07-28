@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/aameen951/icons-js-code-generator/issues"
   },
-  "homepage": "https://github.com/aameen951/icons-js-code-generator#readme"
+  "homepage": "https://github.com/aameen951/icons-js-code-generator#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-brands-svg-icons": "^5.9.0",
+    "@fortawesome/free-regular-svg-icons": "^5.9.0",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0"
+  }
 }
