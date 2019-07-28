@@ -1,4 +1,4 @@
-const fs = require("../promise-fs");
+const fs = require("promise-fs");
 
 function uppercaseFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
