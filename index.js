@@ -19,11 +19,10 @@ const fa_free_solid_icons = require('@fortawesome/free-solid-svg-icons');
 const fa_free_regular_icons = require('@fortawesome/free-regular-svg-icons');
 const fa_free_brands_icons = require('@fortawesome/free-brands-svg-icons');
 
-async function generate(ctx)
+async function generate(ctx, opt)
 {
-  ctx.addDependency("icons.json");
+  const icons = JSON.parse(await ctx.readDependency(opt.meta_file_rel_path));
   
-  const icons = JSON.parse(await fs.readFile("icons.json"));
   const lines = [];
 
   const fa_data = new Map(Object.entries({
@@ -48,7 +47,13 @@ async function generate(ctx)
     }
   });
 
-  await ctx.generateCode("icons.js", lines.join("\r\n")+"\r\n");
+  await ctx.generateCode(opt.output_file_rel_path, lines.join("\r\n")+"\r\n");
 }
 
-module.exports = generate;
+module.exports = (meta_file_rel_path, output_file_rel_path) => {
+  const opt = {
+    meta_file_rel_path,
+    output_file_rel_path,
+  };
+  return (ctx) => generate(ctx, opt);
+};
